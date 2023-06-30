@@ -30,14 +30,14 @@ passing a signature rather done a wallet address this is the sender
 app.post("/send", (req, res) => {
   //get signature from the client-side application
   //recover the public address from the sgnature
-  console.log("===========post sende called=====")
+  
   const { message, signature } = req.body;
 
   const messageHash = toHex(keccak256(Uint8Array.from(message)));
   sender=message.sender;
   recipient=message.recipient;
   amount=message.amount;
-  console.log("=====the amount===== ",signature)
+ 
 
   //let's first check the signature
   const isSigner = secp256k1.verify(signature, messageHash, sender);
